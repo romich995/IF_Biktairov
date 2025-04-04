@@ -7,14 +7,14 @@ import lombok.ToString;
 @ToString
 public abstract class Car {
     private final String model;
-    private final String yearOfRelease;
+    private final int yearOfRelease;
     private String color;
     private String transmission;
     private int seatsNumber;
     private float wheelDiameterInInches;
 
 
-    public Car(String model, String yearOfRelease,
+    public Car(String model, int yearOfRelease,
                String color, String transmission,
                int seatsNumber, float wheelDiameterInInches) {
         this.model = model;
