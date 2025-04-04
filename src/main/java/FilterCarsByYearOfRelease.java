@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FilterCarsByYearOfRelease {
-    int minYearOfRelease;
+    private int minYearOfRelease;
 
     public FilterCarsByYearOfRelease(int minYearOfRelease){
         this.minYearOfRelease = minYearOfRelease;
