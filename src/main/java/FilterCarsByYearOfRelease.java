@@ -8,24 +8,15 @@ public class FilterCarsByYearOfRelease {
         this.minYearOfRelease = minYearOfRelease;
     }
 
-    public void filterAndPrint(List<Car> cars){
-        List<Car> filteredCars = filterReleasedLater(cars);
-        print(filteredCars);
-    }
-
-    public List<Car> filterReleasedLater(List<Car> cars){
-        List<Car> filteredCars = new ArrayList<>();
+    public void filterReleasedLater(List<Car> cars){
         for (Car car: cars){
             if (car.getYearOfRelease() > minYearOfRelease) {
-                filteredCars.add(car);
+                System.out.println(car);
+            } else {
+                System.out.println("устаревший авто");
             }
+
         }
-        return filteredCars;
     }
 
-    public void print(List<Car> cars){
-        for (Car car: cars){
-            System.out.println(car.toString());
-        }
-    }
 }
