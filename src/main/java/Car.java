@@ -1,8 +1,10 @@
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 public abstract class Car {
     private final String model;
     private final String yearOfRelease;
@@ -22,18 +24,4 @@ public abstract class Car {
         this.seatsNumber = seatsNumber;
         this.wheelDiameterInInches = wheelDiameterInInches;
     }
-
-    @Override
-    public String toString() {
-        return "Car{" +
-                "model='" + model + '\'' +
-                ", yearOfRelease='" + yearOfRelease + '\'' +
-                ", color='" + color + '\'' +
-                ", transmission='" + transmission + '\'' +
-                ", seatsNumber=" + seatsNumber +
-                ", wheelDiameterInInches=" + wheelDiameterInInches +
-                '}';
-    }
 }
-
-
