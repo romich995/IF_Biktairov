@@ -25,7 +25,7 @@ public class FilterCarsByYearOfRelease {
 
     public void print(List<Car> cars){
         for (Car car: cars){
-            System.out.printf(car.toString());
+            System.out.println(car.toString());
         }
     }
 }
