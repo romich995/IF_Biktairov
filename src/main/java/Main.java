@@ -17,7 +17,7 @@ public class Main {
         );
 
         FilterCarsByYearOfRelease filterCarsByYearOfRelease = new FilterCarsByYearOfRelease(2006);
-        filterCarsByYearOfRelease.filterAndPrint(listOfCars);
+        filterCarsByYearOfRelease.filterReleasedLater(listOfCars);
 
         ColorChanger colorChanger = new ColorChanger("green", "red");
         colorChanger.apply(listOfCars.get(3));
