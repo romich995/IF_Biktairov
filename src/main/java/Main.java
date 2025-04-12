@@ -15,16 +15,26 @@ public class Main {
                 new Renault("Logan", 2005, "black", "mechanical", 5, 18),
                 new Renault("Arcana", 2018, "red", "mechanical", 5, 18)
         );
+        printCarReleasedAfter2006(listOfCars);
+        changeColorFromGreenToRed(listOfCars.get(3));
+        printCarWithMechanicalTransmission(listOfCars);
+    }
 
+    public static void printCarReleasedAfter2006(List<Car> listOfCars) {
         FilterCarsByYearOfRelease filterCarsByYearOfRelease = new FilterCarsByYearOfRelease(2006);
         filterCarsByYearOfRelease.filterReleasedLater(listOfCars);
+    }
 
+    public static void changeColorFromGreenToRed(Car car) {
         ColorChanger colorChanger = new ColorChanger("green", "red");
-        colorChanger.apply(listOfCars.get(3));
+        colorChanger.apply(car);
+    }
 
+    public static void printCarWithMechanicalTransmission(List<Car> listOfCars){
         FilterCarsByTransmission filterCarsByTransmission = new FilterCarsByTransmission("mechanical");
         List<Car> filteredCars = filterCarsByTransmission.filterByTransmission(listOfCars);
-        System.out.printf(filteredCars.toString());
-
+        for (Car car: filteredCars){
+            System.out.println(car);
+        }
     }
 }
