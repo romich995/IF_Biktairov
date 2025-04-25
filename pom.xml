@@ -33,8 +33,7 @@
         <dependency>
             <groupId>com.codeborne</groupId>
             <artifactId>selenide</artifactId>
-            <version>7.9.1</version>
-            <scope>test</scope>
+            <version>5.25.1</version>
         </dependency>
     </dependencies>
 
