@@ -53,5 +53,36 @@ public class EduJiraTest extends WebHook {
 
     }
 
+    @Test
+    public void createTaskTest(){
+        LoginPage loginPage = Selenide.page(LoginPage.class);
+        ProjectPage testProjectPage = loginPage.login(login, password)
+                .checkLogin("Назначенные мне")
+                .openTestProject()
+                .checkProjectName("Test");
+
+        //testProjectPage.checkCounter();
+
+        testProjectPage.searchAndOpenTask("TestSeleniumATHomework")
+                .checkVersion("Version 2.0")
+                .checkStatus("Сделать");
+
+        testProjectPage.openCreateTaskForm();
+        testProjectPage.checkVisualDescriptionButton();
+        testProjectPage.checkVisualEnvironmentButton();
+        testProjectPage.setTheme("Test theme");
+        testProjectPage.setDescription("Test description");
+        testProjectPage.setFixVersion("\n                    Version 2.0\n                ");
+        testProjectPage.setLabel("testLabel");
+        testProjectPage.setEnvironment("Test environment");
+        //testProjectPage.setFile("/home/t1/IdeaProjects/IF_Biktairov/src/test/resources/test.txt");
+        testProjectPage.setAffectedVersion("\n                    Version 2.0\n                ");
+        testProjectPage.setLinkedTask();
+        //testProjectPage.setLinkOnEpic();
+        //testProjectPage.setSprint();
+        testProjectPage.createTask();
+        Selenide.sleep(5000);
+    }
+
 
 }
