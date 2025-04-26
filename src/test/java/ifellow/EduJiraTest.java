@@ -11,7 +11,30 @@ public class EduJiraTest extends WebHook {
     @Test
     public void loginTest() {
         LoginPage loginPage = Selenide.page(LoginPage.class);
-        loginPage.login(login, password).checkLogin();
+        loginPage.login(login, password)
+                .checkLogin("Назначенные мне");
+    }
+
+    @Test
+    public void openTestProjectTest(){
+        LoginPage loginPage = Selenide.page(LoginPage.class);
+        loginPage.login(login, password)
+                .checkLogin("Назначенные мне")
+                .openTestProject()
+                .checkProjectName("Test");
+
+    }
+
+    @Test
+    public void tasksCounterTest() {
+        LoginPage loginPage = Selenide.page(LoginPage.class);
+        ProjectPage testProjectPage = loginPage.login(login, password)
+                .checkLogin("Назначенные мне")
+                .openTestProject()
+                .checkProjectName("Test");
+
+        testProjectPage.createTask("Проверка счетчика");
+        testProjectPage.checkCounter();
     }
 
 }
