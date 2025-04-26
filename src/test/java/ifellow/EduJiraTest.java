@@ -33,8 +33,25 @@ public class EduJiraTest extends WebHook {
                 .openTestProject()
                 .checkProjectName("Test");
 
-        testProjectPage.createTask("Проверка счетчика");
         testProjectPage.checkCounter();
     }
+
+    @Test
+    public void testSeleniumATHomeworkTaskInfoTest() {
+
+        LoginPage loginPage = Selenide.page(LoginPage.class);
+        ProjectPage testProjectPage = loginPage.login(login, password)
+                .checkLogin("Назначенные мне")
+                .openTestProject()
+                .checkProjectName("Test");
+
+        testProjectPage.checkCounter();
+
+        testProjectPage.searchAndOpenTask("TestSeleniumATHomework")
+                .checkVersion("Version 2.0")
+                .checkStatus("Сделать");
+
+    }
+
 
 }

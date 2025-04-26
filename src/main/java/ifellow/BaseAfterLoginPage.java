@@ -12,6 +12,7 @@ public abstract class BaseAfterLoginPage {
     final SelenideElement themeInput = $x("//*[@id='summary']").as("Поле ввода темы");
     final SelenideElement submitTaskButton = $x("//*[@id='create-issue-submit']").as("Кнопка сабмита задачи");
     final SelenideElement createdTaskAlert = $x("//a[contains(@class,'issue-created-key')]");
+    final String TaskItemXPathTemplate = "//span[text()='%s']";
 
     public void createTask(String theme){
         createTaskButton.shouldBe(Condition.visible)
@@ -22,6 +23,23 @@ public abstract class BaseAfterLoginPage {
                 .click();
         createdTaskAlert.shouldBe(Condition.exist);
         Selenide.refresh();
+    }
+
+    private String getTaskItemXPath(String task_Name){
+        return TaskItemXPathTemplate.formatted(task_Name);
+    }
+
+
+    public TaskPage searchAndOpenTask(String taskName){
+        searchInput.shouldBe(Condition.visible)
+                .sendKeys(taskName);
+        SelenideElement taskItem = $x(getTaskItemXPath(taskName));
+        taskItem.shouldBe(Condition.visible)
+                .click();
+
+        TaskPage taskPage = Selenide.page(TaskPage.class);
+        taskPage.setName(taskName);
+        return taskPage;
     }
 
 }

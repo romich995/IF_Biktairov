@@ -16,7 +16,6 @@ public class ProjectPage extends BaseAfterLoginPage{
     private final SelenideElement projectName = $x("//*[@id='project-name-val']");
     private final SelenideElement counter = $x("//div[@class='pager']/div[@class='showing']/span") ;
 
-
     public ProjectPage checkProjectName(String expectedText) {
         projectName.shouldBe(Condition.visible)
                 .shouldHave(Condition.text(expectedText));
