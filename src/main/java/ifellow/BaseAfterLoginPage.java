@@ -63,16 +63,14 @@ public abstract class BaseAfterLoginPage {
     }
 
     public void checkVisualDescriptionButton() {
-        visualDescriptionButton.scrollIntoView(true);
         if (!visualDescriptionButton.getAttribute("aria-pressed").equals("true")) {
             visualDescriptionButton.click();
         }
     }
 
     public void checkVisualEnvironmentButton() {
-        visualEnvironmentButton.scrollIntoView(true);
-        if (!visualDescriptionButton.getAttribute("aria-pressed").equals("true")) {
-            visualDescriptionButton.click();
+        if (!visualEnvironmentButton.getAttribute("aria-pressed").equals("true")) {
+            visualEnvironmentButton.click();
         }
     }
 
