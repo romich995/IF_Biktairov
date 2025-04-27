@@ -43,6 +43,14 @@ public abstract class BaseAfterLoginPage {
                 .click();
     }
 
+    public TaskPage goToTask(String name){
+        createdTaskAlert.shouldBe(Condition.visible)
+                .click();
+        TaskPage testTaskPage =  Selenide.page(TaskPage.class);
+        testTaskPage.setName(name);
+        return testTaskPage;
+    }
+
     public void createTask(String theme) {
         createTaskButton.shouldBe(Condition.visible)
                 .click();
@@ -128,24 +136,6 @@ public abstract class BaseAfterLoginPage {
                 .click();
         $x("//ul[@id='предложения']/li[@id='доска-спринт-1-304']").shouldBe(Condition.visible)
                 .click();
-    }
-
-    public void createTask(String theme,
-                           String description,
-                           String fixVersion,
-                           String priority,
-                           String label,
-                           String environment,
-                           String environment_type,
-                           String included_file_path,
-                           String affectedVersion,
-                           String relatedTasks,
-                           String task,
-                           String executor,
-                           String epicLink,
-                           String sprint,
-                           String seriousness) {
-
     }
 
     private String getTaskItemXPath(String task_Name) {
