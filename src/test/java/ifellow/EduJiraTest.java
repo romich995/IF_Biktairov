@@ -61,7 +61,7 @@ public class EduJiraTest extends WebHook {
                 .openTestProject()
                 .checkProjectName("Test");
 
-        //testProjectPage.checkCounter();
+        testProjectPage.checkCounter();
 
         testProjectPage.searchAndOpenTask("TestSeleniumATHomework")
                 .checkVersion("Version 2.0")
@@ -81,7 +81,9 @@ public class EduJiraTest extends WebHook {
         //testProjectPage.setLinkOnEpic();
         //testProjectPage.setSprint();
         testProjectPage.createTask();
-        Selenide.sleep(5000);
+        TaskPage testTaskPage = testProjectPage.goToTask("Test theme");
+        testTaskPage.setStatusInWork();
+        testTaskPage.setStatusDone();
     }
 
 
