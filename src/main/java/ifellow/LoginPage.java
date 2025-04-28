@@ -12,6 +12,7 @@ public class LoginPage extends BaseAfterLoginPage {
     private final SelenideElement entryButton = $x("//*[@id='login']");
     private final SelenideElement recordAfterLogin = $x("//*[@id='gadget-10002-title']");
     private final SelenideElement testProjectItem = $x("//a[@href='https://edujira.ifellow.ru/browse/TEST']");
+    private final SelenideElement openTasksButton = $x("//span[@title='Задачи']/parent::a");
 
     public LoginPage login(String login, String password) {
         loginInput.shouldBe(Condition.visible)
@@ -34,8 +35,9 @@ public class LoginPage extends BaseAfterLoginPage {
                 .click();
         testProjectItem.shouldBe(Condition.visible)
                 .click();
+        openTasksButton.shouldBe(Condition.visible)
+                .click();
         ProjectPage testProjectPage = Selenide.page(ProjectPage.class);
-        testProjectPage.setName("Test");
         return testProjectPage;
     }
 

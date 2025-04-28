@@ -10,9 +10,6 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class TaskPage extends BaseAfterLoginPage {
 
-    @Getter
-    @Setter
-    private String name;
 
     private final SelenideElement statusValue = $x("//span[@id='status-val']/span");
     private final SelenideElement versionValue = $x("//span[@id='fixVersions-field']/a");

@@ -43,11 +43,10 @@ public abstract class BaseAfterLoginPage {
                 .click();
     }
 
-    public TaskPage goToTask(String name){
+    public TaskPage goToTask(){
         createdTaskAlert.shouldBe(Condition.visible)
                 .click();
         TaskPage testTaskPage =  Selenide.page(TaskPage.class);
-        testTaskPage.setName(name);
         return testTaskPage;
     }
 
@@ -149,7 +148,6 @@ public abstract class BaseAfterLoginPage {
                 .click();
 
         TaskPage taskPage = Selenide.page(TaskPage.class);
-        taskPage.setName(taskName);
         return taskPage;
     }
 

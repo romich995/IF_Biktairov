@@ -81,7 +81,7 @@ public class EduJiraTest extends WebHook {
         //testProjectPage.setLinkOnEpic();
         //testProjectPage.setSprint();
         testProjectPage.createTask();
-        TaskPage testTaskPage = testProjectPage.goToTask("Test theme");
+        TaskPage testTaskPage = testProjectPage.goToTask();
         testTaskPage.setStatusInWork();
         testTaskPage.setStatusDone();
     }
