@@ -61,7 +61,7 @@ public class EduJiraTest extends WebHook {
                 .openTestProject()
                 .checkProjectName("Test");
 
-        //testProjectPage.checkCounter();
+        testProjectPage.checkCounter();
 
         testProjectPage.searchAndOpenTask("TestSeleniumATHomework")
                 .checkVersion("Version 2.0")
@@ -78,8 +78,8 @@ public class EduJiraTest extends WebHook {
         testProjectPage.setFile("/home/t1/IdeaProjects/IF_Biktairov/src/test/resources/test.txt");
         testProjectPage.setAffectedVersion("\n                    Version 2.0\n                ");
         testProjectPage.setLinkedTask();
-        //testProjectPage.setLinkOnEpic();
-        //testProjectPage.setSprint();
+        testProjectPage.setLinkOnEpic();
+        testProjectPage.setSprint();
         testProjectPage.createTask();
         TaskPage testTaskPage = testProjectPage.goToTask();
         testTaskPage.setStatusInWork();

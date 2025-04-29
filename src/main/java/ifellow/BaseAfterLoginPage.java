@@ -27,9 +27,9 @@ public abstract class BaseAfterLoginPage {
     final SelenideElement linkedTaskDropDownButton = $x("//div[@id='issuelinks-issues-multi-select']/span");
     final SelenideElement firstLinkedTaskDropDown = $x("//ul[@id='поиск-по-истории']/li[1]");
     final SelenideElement linkOnEpicDropDownButton = $x("//div[@id='customfield_10100-single-select']/span");
-    final SelenideElement firstLinkOnEpicDropDown = $x("//ul[@id='предложения']/li[1]");
+    final SelenideElement firstLinkOnEpicDropDown = $x("//*[@id='customfield_10100-suggestions']/descendant::a[@class='aui-list-item-link'][1]");
     final SelenideElement sprintDropDownButton = $x("//div[@id='customfield_10104-single-select']/span");
-    final SelenideElement firstSprintDropDown = $x("//ul[@id='предложения']/li[1]");
+    final SelenideElement firstSprintDropDown = $x("//*[@id='customfield_10104-suggestions']/descendant::a[@class='aui-list-item-link'][1]");
 
 
 
@@ -123,15 +123,14 @@ public abstract class BaseAfterLoginPage {
     public void setLinkOnEpic(){
         linkOnEpicDropDownButton.shouldBe(Condition.visible)
                 .click();
-        Selenide.sleep(1000);
-        $x("//ul[@id='предложения']/li[1]").shouldBe(Condition.visible)
+        firstLinkOnEpicDropDown.shouldBe(Condition.visible)
                 .click();
     }
 
     public void setSprint(){
         sprintDropDownButton.shouldBe(Condition.visible)
                 .click();
-        $x("//ul[@id='предложения']/li[@id='доска-спринт-1-304']").shouldBe(Condition.visible)
+        firstSprintDropDown.shouldBe(Condition.visible)
                 .click();
     }
 
