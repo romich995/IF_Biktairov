@@ -30,7 +30,7 @@ public abstract class BaseAfterLoginPage {
     final SelenideElement firstLinkOnEpicDropDown = $x("//*[@id='customfield_10100-suggestions']/descendant::a[@class='aui-list-item-link'][1]");
     final SelenideElement sprintDropDownButton = $x("//div[@id='customfield_10104-single-select']/span");
     final SelenideElement firstSprintDropDown = $x("//*[@id='customfield_10104-suggestions']/descendant::a[@class='aui-list-item-link'][1]");
-
+    final SelenideElement alertCloseButton = $x("//div[@id='aui-flag-container']//button");
 
 
     public void openCreateTaskForm() {
@@ -111,6 +111,8 @@ public abstract class BaseAfterLoginPage {
 
     public void setFile(String filePath){
         fileInput.uploadFile(new File(filePath));
+        alertCloseButton.shouldBe(Condition.visible)
+                .click();
     }
 
     public void setLinkedTask(){
