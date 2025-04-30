@@ -1,9 +1,7 @@
 package ifellow;
 
 import com.codeborne.selenide.*;
-
 import java.io.File;
-
 import static com.codeborne.selenide.Selenide.$x;
 
 public abstract class BaseAfterLoginPage {
