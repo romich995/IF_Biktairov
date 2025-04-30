@@ -1,9 +1,7 @@
 package ifellow;
 
 import com.codeborne.selenide.*;
-
 import java.io.File;
-
 import static com.codeborne.selenide.Selenide.$x;
 
 public abstract class BaseAfterLoginPage {
@@ -11,26 +9,26 @@ public abstract class BaseAfterLoginPage {
     final SelenideElement createTaskButton = $x("//*[@id='create_link']").as("Кнопка создания задачи");
     final SelenideElement themeInput = $x("//*[@id='summary']").as("Поле ввода темы");
     final SelenideElement submitTaskButton = $x("//*[@id='create-issue-submit']").as("Кнопка сабмита задачи");
-    final SelenideElement createdTaskAlert = $x("//a[contains(@class,'issue-created-key')]");
+    final SelenideElement createdTaskAlert = $x("//a[contains(@class,'issue-created-key')]").as("Cсылка на задачу в алерте");
     final String TaskItemXPathTemplate = "//span[text()='%s']";
 
-    final SelenideElement descriptionIFrame = $x("//label[@for='description']/parent::div/descendant::iframe[@class='tox-edit-area__iframe']");
-    final SelenideElement environmentIFrame = $x("//label[@for='environment']/parent::div/descendant::iframe[@class='tox-edit-area__iframe']");
-    final SelenideElement visualDescriptionButton = $x("//label[@for='description']/parent::div/descendant::button[text()='Визуальный']");
-    final SelenideElement visualEnvironmentButton = $x("//label[@for='environment']/parent::div/descendant::button[text()='Визуальный']");
+    final SelenideElement descriptionIFrame = $x("//label[@for='description']/parent::div/descendant::iframe[@class='tox-edit-area__iframe']").as("Айфрайм описания");
+    final SelenideElement environmentIFrame = $x("//label[@for='environment']/parent::div/descendant::iframe[@class='tox-edit-area__iframe']").as("Айфрайм окружения");
+    final SelenideElement visualDescriptionButton = $x("//label[@for='description']/parent::div/descendant::button[text()='Визуальный']").as("Кнопка Визуальный в описании");
+    final SelenideElement visualEnvironmentButton = $x("//label[@for='environment']/parent::div/descendant::button[text()='Визуальный']").as("Кнопка Визуальный в окружении");
     final String fixVersionXPathTemplate = "//*[@id='fixVersions']/descendant::option[text()='%s']";
-    final SelenideElement descriptionInput = $x("//body[@id='tinymce']/p");
-    final SelenideElement environmentInput = $x("//body[@id='tinymce']/p");
-    final SelenideElement labelInput = $x("//*[@id='labels-textarea']");
-    final SelenideElement fileInput = $x("//span[text()='Вложение']/parent::legend/parent::fieldset/descendant::input[@type='file']");
+    final SelenideElement descriptionInput = $x("//body[@id='tinymce']/p").as("Поле ввода описания");
+    final SelenideElement environmentInput = $x("//body[@id='tinymce']/p").as("Поле ввода окружения");
+    final SelenideElement labelInput = $x("//*[@id='labels-textarea']").as("Поле ввода метки");
+    final SelenideElement fileInput = $x("//span[text()='Вложение']/parent::legend/parent::fieldset/descendant::input[@type='file']").as("Поле загрузки файла");
     final String affectedVersionXPathTemplate = "//*[@id='versions']/descendant::option[text()='%s']";
-    final SelenideElement linkedTaskDropDownButton = $x("//div[@id='issuelinks-issues-multi-select']/span");
-    final SelenideElement firstLinkedTaskDropDown = $x("//ul[@id='поиск-по-истории']/li[1]");
-    final SelenideElement linkOnEpicDropDownButton = $x("//div[@id='customfield_10100-single-select']/span");
-    final SelenideElement firstLinkOnEpicDropDown = $x("//*[@id='customfield_10100-suggestions']/descendant::a[@class='aui-list-item-link'][1]");
-    final SelenideElement sprintDropDownButton = $x("//div[@id='customfield_10104-single-select']/span");
-    final SelenideElement firstSprintDropDown = $x("//*[@id='customfield_10104-suggestions']/descendant::a[@class='aui-list-item-link'][1]");
-    final SelenideElement alertCloseButton = $x("//div[@id='aui-flag-container']//button");
+    final SelenideElement linkedTaskDropDownButton = $x("//div[@id='issuelinks-issues-multi-select']/span").as("Кнопка раскрытия выпадающего спика связанных задач");
+    final SelenideElement firstLinkedTaskDropDown = $x("//ul[@id='поиск-по-истории']/li[1]").as("Первая связанная таска");
+    final SelenideElement linkOnEpicDropDownButton = $x("//div[@id='customfield_10100-single-select']/span").as("Кнопка раскрытия выпадающего списка ссылки на эпик");
+    final SelenideElement firstLinkOnEpicDropDown = $x("//*[@id='customfield_10100-suggestions']/descendant::a[@class='aui-list-item-link'][1]").as("Первая ссылка на эпик");
+    final SelenideElement sprintDropDownButton = $x("//div[@id='customfield_10104-single-select']/span").as("Кнопка раскрытия выпадающего списка спринтов");
+    final SelenideElement firstSprintDropDown = $x("//*[@id='customfield_10104-suggestions']/descendant::a[@class='aui-list-item-link'][1]").as("Первая ссылка на спринт");
+    final SelenideElement alertCloseButton = $x("//div[@id='aui-flag-container']//button").as("Кнопка закрытия алерта");
 
 
     public void openCreateTaskForm() {

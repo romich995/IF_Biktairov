@@ -1,35 +1,39 @@
 package ifellow;
 
 import com.codeborne.selenide.Selenide;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class EduJiraTest extends WebHook {
 
-    private final String login = System.getenv("JIRA_LOGIN");
-    private final String password = System.getenv("JIRA_PASSWORD");
+    private final String login = "AT4";
+    private final String password = "Qwerty123";
 
     @Test
+    @DisplayName("Тестирование входа на сайт")
     public void loginTest() {
-        LoginPage loginPage = Selenide.page(LoginPage.class);
-        loginPage.login(login, password)
-                .checkLogin("Назначенные мне");
+        BeforeLoginPage beforeLoginPage = Selenide.page(BeforeLoginPage.class);
+        beforeLoginPage.login(login, password)
+                .checkLogin();
     }
 
     @Test
-    public void openTestProjectTest(){
-        LoginPage loginPage = Selenide.page(LoginPage.class);
-        loginPage.login(login, password)
-                .checkLogin("Назначенные мне")
+    @DisplayName("Тестирование перехода на проект 'Test'")
+    public void openTestProjectTest() {
+        BeforeLoginPage beforeLoginPage = Selenide.page(BeforeLoginPage.class);
+        beforeLoginPage.login(login, password)
+                .checkLogin()
                 .openTestProject()
                 .checkProjectName("Test");
 
     }
 
     @Test
+    @DisplayName("Тестирование счетчика")
     public void tasksCounterTest() {
-        LoginPage loginPage = Selenide.page(LoginPage.class);
-        ProjectPage testProjectPage = loginPage.login(login, password)
-                .checkLogin("Назначенные мне")
+        BeforeLoginPage beforeLoginPage = Selenide.page(BeforeLoginPage.class);
+        ProjectPage testProjectPage = beforeLoginPage.login(login, password)
+                .checkLogin()
                 .openTestProject()
                 .checkProjectName("Test");
 
@@ -37,11 +41,12 @@ public class EduJiraTest extends WebHook {
     }
 
     @Test
+    @DisplayName("Тестирование значений версии и статуса задачи TestSeleniumATHomework")
     public void testSeleniumATHomeworkTaskInfoTest() {
 
-        LoginPage loginPage = Selenide.page(LoginPage.class);
-        ProjectPage testProjectPage = loginPage.login(login, password)
-                .checkLogin("Назначенные мне")
+        BeforeLoginPage beforeLoginPage = Selenide.page(BeforeLoginPage.class);
+        ProjectPage testProjectPage = beforeLoginPage.login(login, password)
+                .checkLogin()
                 .openTestProject()
                 .checkProjectName("Test");
 
@@ -54,10 +59,11 @@ public class EduJiraTest extends WebHook {
     }
 
     @Test
-    public void createTaskTest(){
-        LoginPage loginPage = Selenide.page(LoginPage.class);
-        ProjectPage testProjectPage = loginPage.login(login, password)
-                .checkLogin("Назначенные мне")
+    @DisplayName("Тестирование создания задачи")
+    public void createTaskTest() {
+        BeforeLoginPage beforeLoginPage = Selenide.page(BeforeLoginPage.class);
+        ProjectPage testProjectPage = beforeLoginPage.login(login, password)
+                .checkLogin()
                 .openTestProject()
                 .checkProjectName("Test");
 
@@ -75,7 +81,6 @@ public class EduJiraTest extends WebHook {
         testProjectPage.setFixVersion("\n                    Version 2.0\n                ");
         testProjectPage.setLabel("testLabel");
         testProjectPage.setEnvironment("Test environment");
-        testProjectPage.setFile("/home/t1/IdeaProjects/IF_Biktairov/src/test/resources/test.txt");
         testProjectPage.setAffectedVersion("\n                    Version 2.0\n                ");
         testProjectPage.setLinkedTask();
         testProjectPage.setLinkOnEpic();

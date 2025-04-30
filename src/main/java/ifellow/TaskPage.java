@@ -2,8 +2,6 @@ package ifellow;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import lombok.Getter;
-import lombok.Setter;
 
 import static com.codeborne.selenide.Selenide.*;
 
@@ -11,12 +9,12 @@ import static com.codeborne.selenide.Selenide.*;
 public class TaskPage extends BaseAfterLoginPage {
 
 
-    private final SelenideElement statusValue = $x("//span[@id='status-val']/span");
-    private final SelenideElement versionValue = $x("//span[@id='fixVersions-field']/a");
-    private final SelenideElement statusInWorkButton = $x("//*[@id='action_id_21']");
-    private final SelenideElement closeButtonOfUpdateAlert = $x("//div[@id='aui-flag-container']/descendant::button");
-    private final SelenideElement businessProcessButton = $x("//*[@id='opsbar-transitions_more']");
-    private final SelenideElement statusDoneButton = $x("//*[@id='action_id_31']/a");
+    private final SelenideElement statusValue = $x("//span[@id='status-val']/span").as("Значение статуса");
+    private final SelenideElement versionValue = $x("//span[@id='fixVersions-field']/a").as("Значение версии");
+    private final SelenideElement statusInWorkButton = $x("//*[@id='action_id_21']").as("Кнопка перевода задчи в статус В работе");
+    private final SelenideElement closeButtonOfUpdateAlert = $x("//div[@id='aui-flag-container']/descendant::button").as("Кнопка закрытия алерта");
+    private final SelenideElement businessProcessButton = $x("//*[@id='opsbar-transitions_more']").as("Кнопка Бизнес-процессы");
+    private final SelenideElement statusDoneButton = $x("//*[@id='action_id_31']/a").as("Кнопка Выполненно");
 
     public TaskPage checkStatus(String expectedText) {
         statusValue.shouldBe(Condition.visible)
