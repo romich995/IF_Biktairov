@@ -8,7 +8,6 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class TaskPage extends BaseAfterLoginPage {
 
-
     private final SelenideElement statusValue = $x("//span[@id='status-val']/span").as("Значение статуса");
     private final SelenideElement versionValue = $x("//span[@id='fixVersions-field']/a").as("Значение версии");
     private final SelenideElement statusInWorkButton = $x("//*[@id='action_id_21']").as("Кнопка перевода задчи в статус В работе");

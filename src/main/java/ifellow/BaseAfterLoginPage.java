@@ -1,7 +1,9 @@
 package ifellow;
 
 import com.codeborne.selenide.*;
+
 import java.io.File;
+
 import static com.codeborne.selenide.Selenide.$x;
 
 public abstract class BaseAfterLoginPage {
@@ -31,20 +33,37 @@ public abstract class BaseAfterLoginPage {
     final SelenideElement alertCloseButton = $x("//div[@id='aui-flag-container']//button").as("Кнопка закрытия алерта");
 
 
-    public void openCreateTaskForm() {
+    private void openCreateTaskForm() {
         createTaskButton.shouldBe(Condition.visible)
                 .click();
     }
 
-    public void createTask(){
+    public TaskPage createAndOpenTestTask() {
+        openCreateTaskForm();
+        checkVisualDescriptionButton();
+        checkVisualEnvironmentButton();
+        setTheme("Test theme");
+        setDescription("Test description");
+        setFixVersion("\n                    Version 2.0\n                ");
+        setLabel("testLabel");
+        setEnvironment("Test environment");
+        setAffectedVersion("\n                    Version 2.0\n                ");
+        setLinkedTask();
+        setLinkOnEpic();
+        setSprint();
+        submitTask();
+        return goToTask();
+    }
+
+    private void submitTask() {
         submitTaskButton.shouldBe(Condition.visible)
                 .click();
     }
 
-    public TaskPage goToTask(){
+    private TaskPage goToTask() {
         createdTaskAlert.shouldBe(Condition.visible)
                 .click();
-        TaskPage testTaskPage =  Selenide.page(TaskPage.class);
+        TaskPage testTaskPage = Selenide.page(TaskPage.class);
         return testTaskPage;
     }
 
@@ -59,75 +78,75 @@ public abstract class BaseAfterLoginPage {
         Selenide.refresh();
     }
 
-    public void checkVisualDescriptionButton() {
+    private void checkVisualDescriptionButton() {
         if (!visualDescriptionButton.getAttribute("aria-pressed").equals("true")) {
             visualDescriptionButton.click();
         }
     }
 
-    public void checkVisualEnvironmentButton() {
+    private void checkVisualEnvironmentButton() {
         if (!visualEnvironmentButton.getAttribute("aria-pressed").equals("true")) {
             visualEnvironmentButton.click();
         }
     }
 
-    public void setTheme(String theme) {
+    private void setTheme(String theme) {
         themeInput.shouldBe(Condition.visible)
                 .sendKeys(theme);
     }
 
-    public void setDescription(String description) {
+    private void setDescription(String description) {
         Selenide.switchTo().frame(descriptionIFrame);
         descriptionInput.shouldBe(Condition.enabled)
                 .sendKeys(description);
         Selenide.switchTo().defaultContent();
     }
 
-    public void setFixVersion(String fixVersion) {
+    private void setFixVersion(String fixVersion) {
         SelenideElement fixVersionOption = $x(fixVersionXPathTemplate.formatted(fixVersion));
         fixVersionOption.shouldBe(Condition.visible)
                 .click();
     }
 
-    public void setAffectedVersion(String version) {
+    private void setAffectedVersion(String version) {
         SelenideElement affectedVersionOption = $x(affectedVersionXPathTemplate.formatted(version));
         affectedVersionOption.shouldBe(Condition.visible)
                 .click();
     }
 
-    public void setLabel(String label) {
+    private void setLabel(String label) {
         labelInput.shouldBe(Condition.exist)
                 .sendKeys(label);
     }
 
-    public void setEnvironment(String environment) {
+    private void setEnvironment(String environment) {
         Selenide.switchTo().frame(environmentIFrame);
         environmentInput.shouldBe(Condition.enabled)
                 .sendKeys(environment);
         Selenide.switchTo().defaultContent();
     }
 
-    public void setFile(String filePath){
+    private void setFile(String filePath) {
         fileInput.uploadFile(new File(filePath));
         alertCloseButton.shouldBe(Condition.visible)
                 .click();
     }
 
-    public void setLinkedTask(){
+    private void setLinkedTask() {
         linkedTaskDropDownButton.shouldBe(Condition.visible)
                 .click();
         firstLinkedTaskDropDown.shouldBe(Condition.visible)
                 .click();
     }
 
-    public void setLinkOnEpic(){
+    private void setLinkOnEpic() {
         linkOnEpicDropDownButton.shouldBe(Condition.visible)
                 .click();
         firstLinkOnEpicDropDown.shouldBe(Condition.visible)
                 .click();
     }
 
-    public void setSprint(){
+    private void setSprint() {
         sprintDropDownButton.shouldBe(Condition.visible)
                 .click();
         firstSprintDropDown.shouldBe(Condition.visible)

@@ -73,20 +73,7 @@ public class EduJiraTest extends WebHook {
                 .checkVersion("Version 2.0")
                 .checkStatus("Сделать");
 
-        testProjectPage.openCreateTaskForm();
-        testProjectPage.checkVisualDescriptionButton();
-        testProjectPage.checkVisualEnvironmentButton();
-        testProjectPage.setTheme("Test theme");
-        testProjectPage.setDescription("Test description");
-        testProjectPage.setFixVersion("\n                    Version 2.0\n                ");
-        testProjectPage.setLabel("testLabel");
-        testProjectPage.setEnvironment("Test environment");
-        testProjectPage.setAffectedVersion("\n                    Version 2.0\n                ");
-        testProjectPage.setLinkedTask();
-        testProjectPage.setLinkOnEpic();
-        testProjectPage.setSprint();
-        testProjectPage.createTask();
-        TaskPage testTaskPage = testProjectPage.goToTask();
+        TaskPage testTaskPage = testProjectPage.createAndOpenTestTask();
         testTaskPage.setStatusInWork();
         testTaskPage.setStatusDone();
     }
