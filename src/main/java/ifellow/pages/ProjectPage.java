@@ -1,4 +1,4 @@
-package ifellow;
+package ifellow.pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
@@ -21,9 +21,13 @@ public class ProjectPage extends BaseAfterLoginPage{
         return Integer.parseInt(counter.shouldBe(Condition.visible).text().split(" ")[2]);
     }
 
-    public void checkCounter(){
+    public int getCountTasksAndCreateTask() {
         int previousCount = getCountTasks();
         createTask("Проверка счетчика");
+        return previousCount;
+    }
+
+    public void checkCounter(int previousCount) {
         int currentCount = getCountTasks();
         Assertions.assertEquals(previousCount + 1 , currentCount);
     }

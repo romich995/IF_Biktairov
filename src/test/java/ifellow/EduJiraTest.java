@@ -1,6 +1,9 @@
 package ifellow;
 
 import com.codeborne.selenide.Selenide;
+import ifellow.pages.BeforeLoginPage;
+import ifellow.pages.ProjectPage;
+import ifellow.pages.TaskPage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -36,8 +39,8 @@ public class EduJiraTest extends WebHook {
                 .checkLogin()
                 .openTestProject()
                 .checkProjectName("Test");
-
-        testProjectPage.checkCounter();
+        int countTasks = testProjectPage.getCountTasksAndCreateTask();
+        testProjectPage.checkCounter(countTasks);
     }
 
     @Test
@@ -50,7 +53,8 @@ public class EduJiraTest extends WebHook {
                 .openTestProject()
                 .checkProjectName("Test");
 
-        testProjectPage.checkCounter();
+        int countTasks = testProjectPage.getCountTasksAndCreateTask();
+        testProjectPage.checkCounter(countTasks);
 
         testProjectPage.searchAndOpenTask("TestSeleniumATHomework")
                 .checkVersion("Version 2.0")
@@ -67,7 +71,8 @@ public class EduJiraTest extends WebHook {
                 .openTestProject()
                 .checkProjectName("Test");
 
-        testProjectPage.checkCounter();
+        int countTasks = testProjectPage.getCountTasksAndCreateTask();
+        testProjectPage.checkCounter(countTasks);
 
         testProjectPage.searchAndOpenTask("TestSeleniumATHomework")
                 .checkVersion("Version 2.0")

@@ -1,4 +1,4 @@
-package ifellow;
+package ifellow.pages;
 
 import com.codeborne.selenide.*;
 import java.io.File;

@@ -1,4 +1,4 @@
-package ifellow;
+package ifellow.pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
