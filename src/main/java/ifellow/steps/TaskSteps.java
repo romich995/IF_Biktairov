@@ -12,4 +12,12 @@ public class TaskSteps {
         taskPage.checkVersion(version)
                 .checkStatus(status);
     }
+
+    @Тогда("^создал тестовую задачу, перешел на страницу задачи и прогнал по всем статусам")
+    public void createTestTask() {
+        TaskPage testTaskPage = taskPage.createAndOpenTestTask();
+        testTaskPage.setStatusInWork();
+        testTaskPage.setStatusDone();
+
+    }
 }

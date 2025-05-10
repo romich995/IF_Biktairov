@@ -56,11 +56,12 @@ public class EduJiraTest extends WebHook {
         int countTasks = testProjectPage.getCountTasksAndCreateTask();
         testProjectPage.checkCounter(countTasks);
 
-        testProjectPage.searchAndOpenTask("TestSeleniumATHomework")
+        TaskPage testSeleniumATHomeworkTaskPage = testProjectPage.searchAndOpenTask("TestSeleniumATHomework");
+        testSeleniumATHomeworkTaskPage
                 .checkVersion("Version 2.0")
                 .checkStatus("Сделать");
-
     }
+
 
     @Test
     @DisplayName("Тестирование создания задачи")
@@ -74,14 +75,14 @@ public class EduJiraTest extends WebHook {
         int countTasks = testProjectPage.getCountTasksAndCreateTask();
         testProjectPage.checkCounter(countTasks);
 
-        testProjectPage.searchAndOpenTask("TestSeleniumATHomework")
+        TaskPage testSeleniumATHomeworkTaskPage = testProjectPage.searchAndOpenTask("TestSeleniumATHomework");
+        testSeleniumATHomeworkTaskPage
                 .checkVersion("Version 2.0")
                 .checkStatus("Сделать");
 
-        TaskPage testTaskPage = testProjectPage.createAndOpenTestTask();
+        TaskPage testTaskPage = testSeleniumATHomeworkTaskPage.createAndOpenTestTask();
         testTaskPage.setStatusInWork();
         testTaskPage.setStatusDone();
     }
-
 
 }

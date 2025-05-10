@@ -7,6 +7,8 @@ import io.cucumber.java.ru.Дано;
 import io.cucumber.java.ru.Когда;
 import io.cucumber.java.ru.Тогда;
 
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+
 public class EduJiraAuthSteps {
     private final BeforeLoginPage beforeLoginPage = new BeforeLoginPage();
     private final AfterLoginPage afterLoginPage = new AfterLoginPage();
@@ -14,6 +16,7 @@ public class EduJiraAuthSteps {
     @Дано("^находимся на странице аутентификации")
     public void openAuthPage() {
         Selenide.open("https://edujira.ifellow.ru");
+        getWebDriver().manage().window().maximize();
     }
 
     @Когда("^ввожу логин '(.*)' и пароль '(.*)' и далее сабмичу форму")
