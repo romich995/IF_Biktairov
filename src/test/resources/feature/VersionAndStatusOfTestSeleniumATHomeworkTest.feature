@@ -1,5 +1,4 @@
 # language: ru
-@qa
 
 Функция: Тест на соответствие версии и статуса задачи TestSeleniumATHomework
 
