@@ -7,6 +7,7 @@ import ifellow.reqres.dto.UserPost;
 import ifellow.util.JsonFromResources;
 import io.restassured.response.ValidatableResponse;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.*;
@@ -16,6 +17,7 @@ public class CheckResponseStatusAndFieldsTest {
     UserAPI userAPI = new UserAPI();
 
     @Test
+    @DisplayName("Тестирование создания пользователя")
     public void checkResponseStatusAndFieldsTest() {
         UserFile userFile = JsonFromResources.readJson("data.json", UserFile.class);
         userFile.setName("Tomato");
