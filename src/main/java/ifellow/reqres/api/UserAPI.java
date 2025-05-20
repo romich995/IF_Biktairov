@@ -1,8 +1,6 @@
 package ifellow.reqres.api;
 
-import ifellow.reqres.dto.UserGet;
 import ifellow.reqres.dto.UserPost;
-import io.restassured.http.Header;
 import io.restassured.response.ValidatableResponse;
 
 import static io.restassured.RestAssured.*;

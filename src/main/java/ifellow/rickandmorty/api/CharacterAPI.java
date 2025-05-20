@@ -21,7 +21,7 @@ public class CharacterAPI extends BaseAPI {
     public Character getMortySmith() {
         return given()
                 .when()
-                .get("/character/2")
+                .get(ENDPOINT + "/2")
                 .then()
                 .extract()
                 .as(Character.class);
