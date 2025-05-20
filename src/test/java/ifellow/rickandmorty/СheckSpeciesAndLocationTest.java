@@ -1,3 +1,5 @@
+package ifellow.rickandmorty;
+
 import ifellow.rickandmorty.api.CharacterAPI;
 import ifellow.rickandmorty.dto.Character;
 import ifellow.rickandmorty.dto.Episode;

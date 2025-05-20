@@ -2,13 +2,15 @@ package ifellow.rickandmorty.api;
 
 import ifellow.rickandmorty.dto.Character;
 
-import javax.swing.text.html.HTMLDocument;
 import java.net.URL;
 
 import static io.restassured.RestAssured.*;
 
 
 public class CharacterAPI extends BaseAPI {
+
+    private static final String ENDPOINT = "/character";
+
     public Character getCharacterByURL(URL url) {
         return given()
                 .when()
